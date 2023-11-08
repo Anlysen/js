@@ -14,8 +14,6 @@ array[array.length] = 'break'
 
 // Hello, Andrew!
 
-// Git stop!
-// Isses
 
 
 const inputElement = document.getElementById('title')
@@ -102,7 +100,10 @@ const notes = [
 ]
 
 function render() {
-    listElement.innerHTML = ''
+    listElement.innerHTML = '' // Каждый раз создаётся пустое поле ввода
+    if (notes.length === 0) {
+        listElement.innerHTML = '<p>No elements</p>'
+    }
     for (let i = 0; i < notes.length; i++) {
       listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i], i)) // Элемент объекта списка
     }
@@ -124,14 +125,17 @@ createBtn.onclick = function () {
 }
 
 listElement.onclick = function (event) {
+    //console.log(event.target.dataset.index)
     if (event.target.dataset.index) {
         const index = parseInt(event.target.dataset.index)
-        const type = event.target.dataset.index.type
+        const type = event.target.dataset.type
 
         if (type === 'toggle') {
+            //console.log('toggle', index)
             notes[index].completed = !notes[index].completed
         } else if (type === 'remove') {
-            console.log('remove', index)
+            //console.log('remove', index)
+            notes.splice(index, 1) // Удаление объекта
         }
         render()
     }
@@ -139,18 +143,21 @@ listElement.onclick = function (event) {
 
 // Если note.completed = true, доавляем класс text-decoration-line-through
 // Если note.completed = false, добавляем пустую строчку
-// Строчка 132
 
 function getNoteTemplate(note, index) { // note - обьект, title - его свойство, формируется строчка для элемента
     return `
     <li
-            class="list-group-item d-flex justify-content-between align-items-center"
+            class="list-group-item d-flex justify-content-between
+            align-items-center"
         >
-            <span class="${note.completed ? 'text-decoration-line-through' : ''}">${note.title}</span>
+            <span class="${note.completed ? 'text-decoration-line-through' : ''}">${
+        note.title
+    }</span>
             <span>
-                <span class="btn btn-small btn-${note.completed ? 'warning' : 'success'
+                <span class="btn btn-small btn-${
+                    note.completed ? 'warning' : 'success'
             }" data-index="${index}" data-type="toggle">&check;</span>
-                <span class="btn btn-small btn-danger" data-type-"remove"
+                <span class="btn btn-small btn-danger" data-type="remove"
                 data-index="${index}">&times;</span>
             </span>
         </li>
