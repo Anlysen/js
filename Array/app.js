@@ -12,6 +12,8 @@ console.log(array)
 array[array.length] = 'break'
 */
 
+// Hello, Andrew!
+
 const inputElement = document.getElementById('title')
 const createBtn = document.getElementById('create')
 const listElement = document.getElementById('list')
