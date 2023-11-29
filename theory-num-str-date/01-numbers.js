@@ -76,7 +76,38 @@ const strFloat = '42.42'
 
 
 // Math
-console.log(Math.E)
-console.log(Math.PI)
+//console.log(Math.E)
+//console.log(Math.PI)
 
-console.log(Math.sqrt(25))
+//console.log(Math.sqrt(25)) // 5
+//console.log(Math.pow(2, 3)) // Возводим в степень | 8
+//console.log(Math.abs(-40)) // Если стоит -40, результат будет 40
+//console.log(Math.max(2, 5, 42, 199, 0)) // Передаем неограниченое число значений и получвем максимальное значение из них 199
+//console.log(Math.min(2, 5, 42, 199, 0)) // Получаем минимальное число из списка 0
+
+
+// ====================
+
+
+//const myNum = 4.2
+//console.log(Math.floor(myNum)) // Если мы во floor() передаем дробное число, мы всегда округляем его в меньшую сторону
+// От 4.9 получаем 4
+//console.log(Math.ceil(myNum)) // ceil() - округляет до целочисленного значения в большую сторону
+// От 4.9 получаем 5
+//console.log(Math.round(myNum)) // round() - округляет до ближайшего целочисленного значения
+// Если будет число 4.2, выдаст 4, если 4.9, выдаст 5
+//console.log(Math.trunc(myNum)) // trunc() - всегда возвращает только целую часть числа
+// От 4.9 получаем 4, 9 отсекает
+//console.log(Math.random()) // random() - возвращает случайное значение в диапазоне от 0 до 1
+
+
+// ====================
+
+
+// Пример random()
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+} // Что бы получить челочисленое число, оборачиваем в Math.floor()
+
+const num1 = getRandomNumber(10, 100)
+console.log(num1)
