@@ -73,8 +73,8 @@
 //arrow('I`m here, what`s wrong dude? I have $', 1000)
 
 // Стрелочный вариант
-const arrow2 = (name) => console.log('Hey - '
-, name)
+//const arrow2 = (name) => console.log('Hey - '
+//, name)
 
 //arrow2('Stop playing with me mate!!! I have $', 1000)
 
@@ -119,10 +119,26 @@ function sumAll(... numbers) {
     return numbers.reduce((acc, cur) => (acc += // Принимаем стрелочную функцию, принтмаем acc - аккумулятор и cur - текущее значение
 cur), 0) // По умолчанию равняется 0
 }
-console.log(sumAll(1, 2, 3, 4, 5)) // 15
+//console.log(sumAll(1, 2, 3, 4, 5)) // 15
 
 
 // ====================
 
 
 // Closures - замыкание
+/*
+Замыкание - это когда функция может замкнуть в
+себе какое-то определенное значение, которое будет в
+дальнейшем использоваться. Проще говоря это функция в
+которой есть еще одна функция
+*/
+
+function createPerson (name) {
+    return function (lastname) {
+        console.log(name + ' ' + lastname) // В этом месте замыкание
+    }
+}
+
+const addLastName = createPerson('Andrew')
+addLastName('Lysenko')
+addLastName('Tyson')
