@@ -37,6 +37,6 @@ console.log(firstName.toLowerCase().startsWith('andr')) // Пулучаем бу
 console.log(firstName.endsWith('rew')) // Проверяет на что заканчивается строчка
 console.log(firstName.repeat(3)) // Повторяет строчку столько раз, сколько указывается в строчке
 
-const password = '   my password   ' // Если клиент написал пробелы...
+const password = '   my password   ' // Если клиент написал пробелы
 
 console.log(password.trim()) // Уберает пробелы
