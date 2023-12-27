@@ -20,10 +20,46 @@
 
 // ===========
 
+let mode = 'full' // Сюда вставляем тот формат, который необходимо показать, время, дата или и то и другое
 const now = Date()
 const output = document.getElementById('output')
 const fullBtn = document.getElementById('full')
 const dateBtn = document.getElementById('date')
 const timeBtn = document.getElementById('time')
 
-output.textContent = new Date()
+function bindMode(name) {
+    return function() {
+        mode = name
+        update() // Эта функция позволяет ускорить загрузку
+    }
+}
+
+fullBtn.onclick = bindMode('full') // Работа кнопки, нажимая на которую мы увидим то, что выбрали
+
+dateBtn.onclick = bindMode('date') // Работа кнопки, нажимая на которую мы увидим то, что выбрали
+
+timeBtn.onclick = bindMode('time') // Работа кнопки, нажимая на которую мы увидим то, что выбрали
+
+
+
+setInterval(update, 1000)
+update() // Вызываем функцию до ее объявления
+
+function update() {
+    output.textContent = format(mode) // В эту функцию помещяем формат, куда мы поместили дату и время, что бы не дублировать строчки
+}
+
+// Pure Function
+function format(formatMode) {
+    const now = new Date()
+
+    switch (formatMode) {
+        case 'time' :
+            return now.toLocaleTimeString() // Если равен времени
+        case 'date' :
+            return now.toLocaleDateString() // Если равен дате
+        case 'full' :
+            return now.toLocaleDateString() + ' ' + now.toLocaleTimeString() // Если равен full, возвращает сначала дату, время
+        default: return now.toLocaleTimeString() // Если ничему не равен, по дефолту возвращает toLocaleTimeString()
+    }
+}
