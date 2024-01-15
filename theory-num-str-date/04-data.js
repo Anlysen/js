@@ -41,8 +41,7 @@ dateBtn.onclick = bindMode('date') // Работа кнопки, нажимая 
 timeBtn.onclick = bindMode('time') // Работа кнопки, нажимая на которую мы увидим то, что выбрали
 
 
-
-setInterval(update, 1000)
+setInterval(update, 100)
 update() // Вызываем функцию до ее объявления
 
 function update() {
@@ -55,7 +54,7 @@ function format(formatMode) {
 
     switch (formatMode) {
         case 'time' :
-            return now.toLocaleTimeString() // Если равен времени
+            return now.toLocaleTimeString() + ' ' + now.getMilliseconds() // Если равен времени
         case 'date' :
             return now.toLocaleDateString() // Если равен дате
         case 'full' :

@@ -53,3 +53,18 @@ const delay = (time = 1000) => {
 // .finally(() => console.log('Finally'))
 
 
+const getData = () => new Promise((resolve) =>
+resolve([1, 2, 3]))
+
+async function asyncExample() {
+  try {
+    const data = await getData()
+    console.log(data)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    console.log('Finally')
+  }
+}
+// Там где используем оператор await, обязательно в начале функции ставим ключивое слово async
+asyncExample( )

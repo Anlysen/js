@@ -78,6 +78,7 @@ minusBtn.onclick = function () {
 
 // Функция, которая автоматизирует код
 function printResult (result) {
+    console.log('Result to print', result)
     if (result < 0) {
         resultElement.style.color = 'red' // Описывает, каким цветом будет результат
     } else {
@@ -88,22 +89,25 @@ function printResult (result) {
 
 // Вариант-1
 function computeNumberWithAction(inp1, inp2, actionSymbal) { // Аналог функции submitBtn.onclick = function, которая ниже
-    const num1 = Number(inp1.value)
-    const num2 = Number(inp2.value)
+    const num1 = +inp1.value
+    const num2 = +inp2.value
 
-    if (actionSymbal == '+') {
-        return num1 + num2 // Возвращаем значение через return
-    }
-    if (actionSymbal == '-') {
-        return num1 - num2 // Возвращаем значение через return
-    }
+    //if (actionSymbal == '+') {
+    //    return num1 + num2 // Возвращаем значение через return
+    //}
+    //if (actionSymbal == '-') {
+    //    return num1 - num2 // Возвращаем значение через return
+    //}
     // if (actionSymbal == '*') {
     //     return num1 * num2 // Возвращаем значение через return
     // }
     // if (actionSymbal == '/') {
     //     return num1 / num2 // Возвращаем значение через return
     // }
-    // return actionSymbal == '+' ? num1 + num2 : num1 - num2 // Тернарное выражение
+
+    const result = actionSymbal == '+' ? num1 + num2 : num1 - num2
+    return result
+    // Тернарное выражение
 }
 
 // Вариант-2
